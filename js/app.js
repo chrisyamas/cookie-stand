@@ -4,272 +4,222 @@
 
 let locationSales = document.getElementById('location-sales');
 
-console.log(locationSales); // html element
-console.dir(locationSales); // element as a JS Object
+let storeHours = ['6:00am', '7:00am', '8:00am', '9:00am', '10:00am', '11:00am', '12:00pm', '1:00pm', '2:00pm', '3:00pm', '4:00pm', '5:00pm', '6:00pm', '7:00pm'];
 
-// Stores the min/max hourly customers, and the average cookies per customer, in object properties
-// Uses a method of that object to generate a random number of customers per hour. Objects/Math/random
-// Calculate and store the simulated amounts of cookies purchased for each hour at each location using average cookies purchased and the random number of customers generated
-// Store the results for each location in a separate array… perhaps as a property of the object representing that location
-// Display the values of each array as unordered lists in the browser
+let locationArray = []; // this will store all location objects created by constructor function
 
-let storeHours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm'];
+// ******** Constructor Function ********
 
-let seattle = {
-  geo: 'Seattle',
-  minCust: 23,
-  maxCust: 65,
-  avgCook: 6.3,
-  custPerHour: [],
-  cookPerHour: [],
-  totalCook: 0,
-  cookiesHour: 0,
-  getHourCust: function() {
-    for (let i = 0; i < storeHours.length; i++) {
-      this.custPerHour.push(Math.floor(Math.random() * (this.maxCust - this.minCust + 1) + this.minCust));
-      console.log(this.custPerHour);
-    }
-  },
-  getHourCook: function() {
-    for (let i = 0; i < storeHours.length; i++) {
-      this.cookPerHour.push(Math.ceil(this.custPerHour[i] * this.avgCook));
-      this.totalCook += this.cookPerHour[i];
-      console.log(this.cookPerHour);
-    }
-  },
+function Sales(geo, minCust, maxCust, avgCook, custPerHour, cookPerHour, totalCook) {
+  this.geo = geo;
+  this.minCust = minCust;
+  this.maxCust = maxCust;
+  this.avgCook = avgCook;
+  this.custPerHour = custPerHour;
+  this.cookPerHour = cookPerHour;
+  this.totalCook = totalCook;
+
+  locationArray.push(this); // this pushes all instantiated objects into an array
 }
-seattle.getHourCust();
-seattle.getHourCook();
 
-let tokyo = {
-  geo: 'Tokyo',
-  minCust: 3,
-  maxCust: 24,
-  avgCook: 1.2,
-  custPerHour: [],
-  cookPerHour: [],
-  totalCook: 0,
-  cookiesHour: 0,
-  getHourCust: function() {
-    for (let i = 0; i < storeHours.length; i++) {
-      this.custPerHour.push(Math.floor(Math.random() * (this.maxCust - this.minCust + 1) + this.minCust));
-      console.log(this.custPerHour);
-    }
-  },
-  getHourCook: function() {
-    for (let i = 0; i < storeHours.length; i++) {
-      this.cookPerHour.push(Math.ceil(this.custPerHour[i] * this.avgCook));
-      this.totalCook += this.cookPerHour[i];
-      console.log(this.cookPerHour);
-    }
-  },
-}
-tokyo.getHourCust();
-tokyo.getHourCook();
+let seattle = new Sales('Seattle', 23, 65, 6.3, [], [], 0);
 
-let dubai = {
-  geo: 'Dubai',
-  minCust: 11,
-  maxCust: 38,
-  avgCook: 3.7,
-  custPerHour: [],
-  cookPerHour: [],
-  totalCook: 0,
-  cookiesHour: 0,
-  getHourCust: function() {
-    for (let i = 0; i < storeHours.length; i++) {
-      this.custPerHour.push(Math.floor(Math.random() * (this.maxCust - this.minCust + 1) + this.minCust));
-      console.log(this.custPerHour);
-    }
-  },
-  getHourCook: function() {
-    for (let i = 0; i < storeHours.length; i++) {
-      this.cookPerHour.push(Math.ceil(this.custPerHour[i] * this.avgCook));
-      this.totalCook += this.cookPerHour[i];
-      console.log(this.cookPerHour);
-    }
-  },
-}
-dubai.getHourCust();
-dubai.getHourCook();
+let tokyo = new Sales('Tokyo', 3, 24, 1.2, [], [], 0);
 
-let paris = {
-  geo: 'Paris',
-  minCust: 20,
-  maxCust: 38,
-  avgCook: 2.3,
-  custPerHour: [],
-  cookPerHour: [],
-  totalCook: 0,
-  cookiesHour: 0,
-  getHourCust: function() {
-    for (let i = 0; i < storeHours.length; i++) {
-      this.custPerHour.push(Math.floor(Math.random() * (this.maxCust - this.minCust + 1) + this.minCust));
-      console.log(this.custPerHour);
-    }
-  },
-  getHourCook: function() {
-    for (let i = 0; i < storeHours.length; i++) {
-      this.cookPerHour.push(Math.ceil(this.custPerHour[i] * this.avgCook));
-      this.totalCook += this.cookPerHour[i];
-      console.log(this.cookPerHour);
-    }
-  },
-}
-paris.getHourCust();
-paris.getHourCook();
+let dubai = new Sales('Dubai', 11, 38, 3.7, [], [], 0);
 
-let lima = {
-  geo: 'Lima',
-  minCust: 2,
-  maxCust: 16,
-  avgCook: 4.6,
-  custPerHour: [],
-  cookPerHour: [],
-  totalCook: 0,
-  cookiesHour: 0,
-  getHourCust: function() {
-    for (let i = 0; i < storeHours.length; i++) {
-      this.custPerHour.push(Math.floor(Math.random() * (this.maxCust - this.minCust + 1) + this.minCust));
-      console.log(this.custPerHour);
-    }
-  },
-  getHourCook: function() {
-    for (let i = 0; i < storeHours.length; i++) {
-      this.cookPerHour.push(Math.ceil(this.custPerHour[i] * this.avgCook));
-      this.totalCook += this.cookPerHour[i];
-      console.log(this.cookPerHour);
-    }
-  },
-}
-lima.getHourCust();
-lima.getHourCook();
+let paris = new Sales('Paris', 20, 38, 2.3, [], [], 0);
 
-// ********* DOM MANIPULATION ***********
+let lima = new Sales('Lima', 2, 16, 4.6, [], [], 0);
 
-// Step 1 - JS Needs a window into the DOM - normally listed at the top of the JS page
-// Step 2 - JS will create an element - document.createElement - method, string of the html element you want create
-// Step 3 - Give it context if needed (optional)
-// Step 4 - add it to the DOM
-
-// location sales will render themselves and add their information via render method.
-seattle.render = function() {
-  // step 2 - create the element
-  let h2Elem = document.createElement('h2');
-  // step 3 - give it context if needed (optional)
-  h2Elem.textContent = this.geo;
-  // step 4 - add it to the DOM -- parent.appendChild(child)
-  locationSales.appendChild(h2Elem);
-
-  let ulElem = document.createElement('ul');
-  locationSales.appendChild(ulElem);
-
-  for(let i = 0; i < this.cookPerHour.length; i++) {
-    let currentCook = this.cookPerHour[i];
-    let hourOfDay = storeHours[i];
-    let liElem = document.createElement('li');
-    liElem.textContent = `${hourOfDay}: ${currentCook} cookies`;
-    ulElem.appendChild(liElem);
+// inherited function to update custPerHour []
+Sales.prototype.getHourCust = function() {
+  for (let i = 0; i < storeHours.length; i++) {
+    this.custPerHour.push(Math.floor(Math.random() * (this.maxCust - this.minCust + 1) + this.minCust));
   }
-  let liElem = document.createElement('li');
-  liElem.textContent = `Total: ${this.totalCook} cookies`;
-  ulElem.appendChild(liElem);
 }
+
+Sales.prototype.getHourCook = function() {
+  this.getHourCust();
+  for (let i = 0; i < storeHours.length; i++) {
+    this.cookPerHour.push(Math.ceil(this.custPerHour[i] * this.avgCook));
+    this.totalCook += this.cookPerHour[i];
+  }
+}
+
+// Header Row Render Function
+locationSales.render = function () {
+  
+  let header = document.createElement('thead');
+  locationSales.appendChild(header);
+
+  let headerRow = document.createElement('tr');
+  header.appendChild(headerRow);
+
+  let thElem1 = document.createElement('th');
+  thElem1.textContent = '';
+  headerRow.appendChild(thElem1);
+
+  for(let i = 0; i < storeHours.length; i++) {
+    let thElem = document.createElement('th');
+    thElem.textContent = storeHours[i];
+    headerRow.appendChild(thElem);
+  }
+  let thElem = document.createElement('th');
+  thElem.textContent = `Daily Location Total`;
+  headerRow.appendChild(thElem);
+}
+locationSales.render(); // calling function
+
+// creating <tbody> element
+let tableBody = document.createElement('tbody');
+locationSales.appendChild(tableBody);
+
+// Seattle Row Render Function
+seattle.render = function() {
+  
+  let row = document.createElement('tr');
+  tableBody.appendChild(row);
+
+  let headCell = document.createElement('th');
+  headCell.textContent = this.geo;
+  row.appendChild(headCell);
+
+  this.getHourCook();
+  console.log(this.cookPerHour);
+  for (let i = 0; i < this.cookPerHour.length; i++) {
+    let cellData = document.createElement('td');
+    cellData.textContent = this.cookPerHour[i];
+    row.appendChild(cellData);
+  }
+
+  let lastCell = document.createElement('td');
+  lastCell.setAttribute("class", "lastcell");
+  lastCell.textContent = this.totalCook;
+  row.appendChild(lastCell);
+
+}
+seattle.render(); // calling function
 
 tokyo.render = function() {
-  // step 2 - create the element
-  let h2Elem = document.createElement('h2');
-  // step 3 - give it context if needed (optional)
-  h2Elem.textContent = this.geo;
-  // step 4 - add it to the DOM -- parent.appendChild(child)
-  locationSales.appendChild(h2Elem);
+  
+  let row = document.createElement('tr');
+  tableBody.appendChild(row);
 
-  let ulElem = document.createElement('ul');
-  locationSales.appendChild(ulElem);
+  let headCell = document.createElement('th');
+  headCell.textContent = this.geo;
+  row.appendChild(headCell);
 
-  for(let i = 0; i < this.cookPerHour.length; i++) {
-    let currentCook = this.cookPerHour[i];
-    let hourOfDay = storeHours[i];
-    let liElem = document.createElement('li');
-    liElem.textContent = `${hourOfDay}: ${currentCook} cookies`;
-    ulElem.appendChild(liElem);
+  this.getHourCook();
+  console.log(this.cookPerHour);
+  for (let i = 0; i < this.cookPerHour.length; i++) {
+    let cellData = document.createElement('td');
+    cellData.textContent = this.cookPerHour[i];
+    row.appendChild(cellData);
   }
-  let liElem = document.createElement('li');
-  liElem.textContent = `Total: ${this.totalCook} cookies`;
-  ulElem.appendChild(liElem);
+
+  let lastCell = document.createElement('td');
+  lastCell.setAttribute("class", "lastcell");
+  lastCell.textContent = this.totalCook;
+  row.appendChild(lastCell);
+
 }
+tokyo.render();
 
 dubai.render = function() {
-  // step 2 - create the element
-  let h2Elem = document.createElement('h2');
-  // step 3 - give it context if needed (optional)
-  h2Elem.textContent = this.geo;
-  // step 4 - add it to the DOM -- parent.appendChild(child)
-  locationSales.appendChild(h2Elem);
+  
+  let row = document.createElement('tr');
+  tableBody.appendChild(row);
 
-  let ulElem = document.createElement('ul');
-  locationSales.appendChild(ulElem);
+  let headCell = document.createElement('th');
+  headCell.textContent = this.geo;
+  row.appendChild(headCell);
 
-  for(let i = 0; i < this.cookPerHour.length; i++) {
-    let currentCook = this.cookPerHour[i];
-    let hourOfDay = storeHours[i];
-    let liElem = document.createElement('li');
-    liElem.textContent = `${hourOfDay}: ${currentCook} cookies`;
-    ulElem.appendChild(liElem);
+  this.getHourCook();
+  console.log(this.cookPerHour);
+  for (let i = 0; i < this.cookPerHour.length; i++) {
+    let cellData = document.createElement('td');
+    cellData.textContent = this.cookPerHour[i];
+    row.appendChild(cellData);
   }
-  let liElem = document.createElement('li');
-  liElem.textContent = `Total: ${this.totalCook} cookies`;
-  ulElem.appendChild(liElem);
+
+  let lastCell = document.createElement('td');
+  lastCell.setAttribute("class", "lastcell");
+  lastCell.textContent = this.totalCook;
+  row.appendChild(lastCell);
+
 }
+dubai.render();
 
 paris.render = function() {
-  // step 2 - create the element
-  let h2Elem = document.createElement('h2');
-  // step 3 - give it context if needed (optional)
-  h2Elem.textContent = this.geo;
-  // step 4 - add it to the DOM -- parent.appendChild(child)
-  locationSales.appendChild(h2Elem);
+  
+  let row = document.createElement('tr');
+  tableBody.appendChild(row);
 
-  let ulElem = document.createElement('ul');
-  locationSales.appendChild(ulElem);
+  let headCell = document.createElement('th');
+  headCell.textContent = this.geo;
+  row.appendChild(headCell);
 
-  for(let i = 0; i < this.cookPerHour.length; i++) {
-    let currentCook = this.cookPerHour[i];
-    let hourOfDay = storeHours[i];
-    let liElem = document.createElement('li');
-    liElem.textContent = `${hourOfDay}: ${currentCook} cookies`;
-    ulElem.appendChild(liElem);
+  this.getHourCook();
+  console.log(this.cookPerHour);
+  for (let i = 0; i < this.cookPerHour.length; i++) {
+    let cellData = document.createElement('td');
+    cellData.textContent = this.cookPerHour[i];
+    row.appendChild(cellData);
   }
-  let liElem = document.createElement('li');
-  liElem.textContent = `Total: ${this.totalCook} cookies`;
-  ulElem.appendChild(liElem);
+
+  let lastCell = document.createElement('td');
+  lastCell.setAttribute("class", "lastcell");
+  lastCell.textContent = this.totalCook;
+  row.appendChild(lastCell);
+
 }
+paris.render();
 
 lima.render = function() {
-  // step 2 - create the element
-  let h2Elem = document.createElement('h2');
-  // step 3 - give it context if needed (optional)
-  h2Elem.textContent = this.geo;
-  // step 4 - add it to the DOM -- parent.appendChild(child)
-  locationSales.appendChild(h2Elem);
+  
+  let row = document.createElement('tr');
+  tableBody.appendChild(row);
 
-  let ulElem = document.createElement('ul');
-  locationSales.appendChild(ulElem);
+  let headCell = document.createElement('th');
+  headCell.textContent = this.geo;
+  row.appendChild(headCell);
 
-  for(let i = 0; i < this.cookPerHour.length; i++) {
-    let currentCook = this.cookPerHour[i];
-    let hourOfDay = storeHours[i];
-    let liElem = document.createElement('li');
-    liElem.textContent = `${hourOfDay}: ${currentCook} cookies`;
-    ulElem.appendChild(liElem);
+  this.getHourCook();
+  console.log(this.cookPerHour);
+  for (let i = 0; i < this.cookPerHour.length; i++) {
+    let cellData = document.createElement('td');
+    cellData.textContent = this.cookPerHour[i];
+    row.appendChild(cellData);
   }
-  let liElem = document.createElement('li');
-  liElem.textContent = `Total: ${this.totalCook} cookies`;
-  ulElem.appendChild(liElem);
-}
 
-seattle.render();
-tokyo.render();
-dubai.render();
-paris.render();
+  let lastCell = document.createElement('td');
+  lastCell.setAttribute("class", "lastcell");
+  lastCell.textContent = this.totalCook;
+  row.appendChild(lastCell);
+
+}
 lima.render();
+
+locationSales.render = function () {
+  
+  let footer = document.createElement('tfoot');
+  locationSales.appendChild(footer);
+
+  let footerRow = document.createElement('tr');
+  footer.appendChild(footerRow);
+
+  let tfElem1 = document.createElement('td');
+  tfElem1.textContent = '';
+  footerRow.appendChild(tfElem1);
+
+  for(let i = 0; i < storeHours.length; i++) {
+    let tfElem = document.createElement('td');
+    tfElem.textContent = seattle.cookPerHour[i] + tokyo.cookPerHour[i] + dubai.cookPerHour[i] + paris.cookPerHour[i] + lima.cookPerHour[i];
+    footerRow.appendChild(tfElem);
+  }
+  let tfElem = document.createElement('td');
+  tfElem.textContent = seattle.totalCook + tokyo.totalCook + dubai.totalCook + paris.totalCook + lima.totalCook;
+  footerRow.appendChild(tfElem);
+}
+locationSales.render();
