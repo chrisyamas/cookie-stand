@@ -1,14 +1,10 @@
 'use strict';
 
-// **Window into the DOM**
-
 let locationSales = document.getElementById('location-sales');
 
 let storeHours = ['6:00am', '7:00am', '8:00am', '9:00am', '10:00am', '11:00am', '12:00pm', '1:00pm', '2:00pm', '3:00pm', '4:00pm', '5:00pm', '6:00pm', '7:00pm'];
 
-let locationArray = []; // this will store all location objects created by constructor function
-
-// ******** Constructor Function ********
+let locationArray = []; 
 
 function Sales(geo, minCust, maxCust, avgCook, custPerHour, cookPerHour, totalCook) {
   this.geo = geo;
@@ -19,7 +15,7 @@ function Sales(geo, minCust, maxCust, avgCook, custPerHour, cookPerHour, totalCo
   this.cookPerHour = cookPerHour;
   this.totalCook = totalCook;
 
-  locationArray.push(this); // this pushes all instantiated objects into an array
+  locationArray.push(this);
 }
 
 let seattle = new Sales('Seattle', 23, 65, 6.3, [], [], 0);
@@ -32,7 +28,7 @@ let paris = new Sales('Paris', 20, 38, 2.3, [], [], 0);
 
 let lima = new Sales('Lima', 2, 16, 4.6, [], [], 0);
 
-// inherited function to update custPerHour []
+
 Sales.prototype.getHourCust = function() {
   for (let i = 0; i < storeHours.length; i++) {
     this.custPerHour.push(Math.floor(Math.random() * (this.maxCust - this.minCust + 1) + this.minCust));
@@ -47,7 +43,6 @@ Sales.prototype.getHourCook = function() {
   }
 }
 
-// Header Row Render Function
 locationSales.render = function () {
   
   let header = document.createElement('thead');
@@ -69,13 +64,11 @@ locationSales.render = function () {
   thElem.textContent = `Daily Location Total`;
   headerRow.appendChild(thElem);
 }
-locationSales.render(); // calling function
+locationSales.render();
 
-// creating <tbody> element
 let tableBody = document.createElement('tbody');
 locationSales.appendChild(tableBody);
 
-// Seattle Row Render Function
 seattle.render = function() {
   
   let row = document.createElement('tr');
@@ -99,7 +92,7 @@ seattle.render = function() {
   row.appendChild(lastCell);
 
 }
-seattle.render(); // calling function
+seattle.render();
 
 tokyo.render = function() {
   
