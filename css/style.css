@@ -85,6 +85,26 @@ p {
   cursor: pointer;
 }
 
+#text-tokyo:hover {
+  font-size: 55px;
+  cursor: pointer;
+}
+
+#text-dubai:hover {
+  font-size: 55px;
+  cursor: pointer;
+}
+
+#text-paris:hover {
+  font-size: 55px;
+  cursor: pointer;
+}
+
+#text-lima:hover {
+  font-size: 55px;
+  cursor: pointer;
+}
+
 #img-tokyo {
   position: relative;
   text-align: center;
@@ -99,6 +119,7 @@ p {
     background-color: salmon;
   font-size: 40px;
   border-radius: 10px;
+  transition: 500ms;
 }
 
 #img-dubai {
@@ -115,6 +136,7 @@ p {
     background-color: salmon;
   font-size: 40px;
   border-radius: 10px;
+  transition: 500ms;
 }
 
 #img-paris {
@@ -131,6 +153,7 @@ p {
     background-color: salmon;
   font-size: 40px;
   border-radius: 10px;
+  transition: 500ms;
 }
 
 #img-lima {
@@ -147,6 +170,7 @@ p {
     background-color: salmon;
   font-size: 40px;
   border-radius: 10px;
+  transition: 500ms;
 }
 
 h1 {
