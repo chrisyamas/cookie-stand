@@ -47,6 +47,8 @@ main section div {
   background-color: salmon;
   margin-top: 100px;
   width: 300px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 main section h1 {
@@ -55,12 +57,15 @@ main section h1 {
 }
 
 h2 {
-  font-size: 35px;
+  font-size: 40px;
   margin-bottom: 20px;
 }
-
+h3 {
+  font-size: 22px;
+}
 p {
   padding-bottom: 10px;
+  font-size: 18px;
 }
 
 #img-seattle {
@@ -99,6 +104,12 @@ p {
     background-color: salmon;
   font-size: 40px;
   border-radius: 10px;
+  transition: 500ms;
+}
+
+#text-tokyo:hover {
+  font-size: 55px;
+  cursor: pointer;
 }
 
 #img-dubai {
@@ -115,6 +126,12 @@ p {
     background-color: salmon;
   font-size: 40px;
   border-radius: 10px;
+  transition: 500ms;
+}
+
+#text-dubai:hover {
+  font-size: 55px;
+  cursor: pointer;
 }
 
 #img-paris {
@@ -131,6 +148,12 @@ p {
     background-color: salmon;
   font-size: 40px;
   border-radius: 10px;
+  transition: 500ms;
+}
+
+#text-paris:hover {
+  font-size: 55px;
+  cursor: pointer;
 }
 
 #img-lima {
@@ -147,6 +170,12 @@ p {
     background-color: salmon;
   font-size: 40px;
   border-radius: 10px;
+  transition: 500ms;
+}
+
+#text-lima:hover {
+  font-size: 55px;
+  cursor: pointer;
 }
 
 h1 {
