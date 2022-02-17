@@ -2,6 +2,153 @@ body {
   background-color: burlywood;
 }
 
+header {
+  background-color: salmon;
+  height: 100px;
+  margin-bottom: 30px;
+}
+
+nav {
+  width: 960px;
+  margin: auto;
+}
+
+header ul {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+header ul li {
+  margin-top: 40px;
+  color:rgb(9, 0, 128);
+  font-size: 25px;
+}
+
+main ul {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-top: 50px;
+}
+
+main ul li div img {
+  width: 200px;
+  height: 200px;
+  border-radius: 30px;
+}
+
+main section {
+  color: rgb(9, 0, 128);
+  text-align: center;
+}
+
+main section div {
+  background-color: salmon;
+  margin-top: 100px;
+  width: 300px;
+}
+
+main section h1 {
+  margin-top: 100px;
+  font-size: 60px;
+}
+
+h2 {
+  font-size: 35px;
+  margin-bottom: 20px;
+}
+
+p {
+  padding-bottom: 10px;
+}
+
+#img-seattle {
+  position: relative;
+  text-align: center;
+  color: rgb(9, 0, 128);
+}
+
+#text-seattle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: salmon;
+  font-size: 40px;
+  border-radius: 10px;
+  transition: 500ms;
+}
+
+#text-seattle:hover {
+  font-size: 55px;
+  cursor: pointer;
+}
+
+#img-tokyo {
+  position: relative;
+  text-align: center;
+  color: rgb(9, 0, 128);
+}
+
+#text-tokyo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+    background-color: salmon;
+  font-size: 40px;
+  border-radius: 10px;
+}
+
+#img-dubai {
+  position: relative;
+  text-align: center;
+  color: rgb(9, 0, 128);
+}
+
+#text-dubai {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+    background-color: salmon;
+  font-size: 40px;
+  border-radius: 10px;
+}
+
+#img-paris {
+  position: relative;
+  text-align: center;
+  color: rgb(9, 0, 128);
+}
+
+#text-paris {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+    background-color: salmon;
+  font-size: 40px;
+  border-radius: 10px;
+}
+
+#img-lima {
+  position: relative;
+  text-align: center;
+  color: rgb(9, 0, 128);
+}
+
+#text-lima {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+    background-color: salmon;
+  font-size: 40px;
+  border-radius: 10px;
+}
+
 h1 {
   font-size: 25px;
   margin-left: auto;
