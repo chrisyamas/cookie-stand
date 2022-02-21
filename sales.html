@@ -6,16 +6,33 @@
     <link rel="stylesheet" href="./css/style.css">
   </head>
   <body>
-    <h1>Cookie Sales by Store Location</h1>
-    <main>
-      <fieldset>
-        <legend>
-          HTML form
-        </legend>
-      </fieldset>
-      <table id="location-sales">
 
-      </table>
+    <h1>Cookie Sales by Store Location</h1>
+
+    <main>
+      <section id="table-section">
+        <table id="location-sales"></table>
+      </section>
+      <section id="form-section">
+        <form id="new-location">
+          <fieldset>
+            <legend>New Location Sales Data</legend>
+
+            <label for="location">New Store Location:</label>
+            <input id="location" type="text" name="location" required="required" placeholder="city (or neighborhood)">
+            
+            <label for="minCus">Minimum Daily Customers:</label>
+            <input id="minCus" type="number" name="minCust" min="0" required="required" class="input" placeholder="slowest day # of customers">
+            
+            <label for="maxCus">Maximum Daily Customers:</label>
+            <input id="maxCus" type="number" name="maxCust" min="0" required="required" class="input" placeholder="busiest day # of customers">
+            
+            <label for="avgCooks">Avg Cookies Sold Per Hour:</label>
+            <input id="avgCooks" type="number" name="avgCook" step="0.1" min="0" required="required" class="input" placeholder="0.0">
+          </fieldset>
+          <button type="submit">Add New Store Data</button>
+        </form>
+      </section>
     </main>
     <script src="./js/app.js"></script>
   </body>
