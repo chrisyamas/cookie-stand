@@ -1,10 +1,16 @@
 'use strict';
 
+// VARIABLE SETTING
+
 let locationSales = document.getElementById('location-sales');
 
 let storeHours = ['6:00am', '7:00am', '8:00am', '9:00am', '10:00am', '11:00am', '12:00pm', '1:00pm', '2:00pm', '3:00pm', '4:00pm', '5:00pm', '6:00pm', '7:00pm'];
 
 let locationArray = []; 
+
+let formNewLoc = document.getElementById('new-location');
+
+// CONSTRUCTOR FUNCTION
 
 function Sales(geo, minCust, maxCust, avgCook, custPerHour, cookPerHour, totalCook) {
   this.geo = geo;
@@ -28,6 +34,7 @@ let paris = new Sales('Paris', 20, 38, 2.3, [], [], 0);
 
 let lima = new Sales('Lima', 2, 16, 4.6, [], [], 0);
 
+// PROTOTYPAL INHERITANCE
 
 Sales.prototype.getHourCust = function() {
   for (let i = 0; i < storeHours.length; i++) {
@@ -43,7 +50,7 @@ Sales.prototype.getHourCook = function() {
   }
 }
 
-locationSales.render = function () {
+function renderHeader() {
   
   let header = document.createElement('thead');
   locationSales.appendChild(header);
@@ -64,7 +71,7 @@ locationSales.render = function () {
   thElem.textContent = `Daily Location Total`;
   headerRow.appendChild(thElem);
 }
-locationSales.render();
+renderHeader();
 
 let tableBody = document.createElement('tbody');
 locationSales.appendChild(tableBody);
@@ -194,7 +201,7 @@ lima.render = function() {
 }
 lima.render();
 
-locationSales.render = function () {
+function renderFooter() {
   
   let footer = document.createElement('tfoot');
   locationSales.appendChild(footer);
@@ -215,4 +222,28 @@ locationSales.render = function () {
   tfElem.textContent = seattle.totalCook + tokyo.totalCook + dubai.totalCook + paris.totalCook + lima.totalCook;
   footerRow.appendChild(tfElem);
 }
-locationSales.render();
+renderFooter();
+
+// EVENT HANDLER
+
+function handleSubmit(event) {
+  event.preventDefault();
+
+  let geo = event.target.geo.value;
+  let minCust = +event.target.minCust.value;
+  let maxCust = +event.target.maxCust.value;
+  let avgCook = +event.target.avgCook.value;
+  let newLoc = new Sales(geo, minCust, maxCust, avgCook);
+
+  newLoc.render();
+
+  let removeFooter = document.getElementById('tfoot');
+  removeFooter.innerHTML = "";
+  removeFooter.remove();
+  renderFooter();
+  formNewLoc.reset();
+}
+
+// ATTACH EVENT LISTENER
+
+formNewLoc.addEventListener('submit', handleSubmit);
