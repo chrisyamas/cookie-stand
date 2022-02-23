@@ -50,6 +50,32 @@ Sales.prototype.getHourCook = function() {
   }
 }
 
+Sales.prototype.render = function() {
+    this.getHourCook();
+  
+    let tableBody = document.createElement('tbody');
+    locationSales.appendChild(tableBody);
+  
+    let row = document.createElement('tr');
+    tableBody.appendChild(row);
+  
+    let headCell = document.createElement('th');
+    headCell.textContent = `${this.geo}`;
+    row.appendChild(headCell);
+  
+    for (let i = 0; i < this.cookPerHour.length; i++) {
+      let cellData = document.createElement('td');
+      cellData.textContent = `${this.cookPerHour[i]}`;
+      row.appendChild(cellData);
+    }
+  
+    let lastCell = document.createElement('td');
+    lastCell.setAttribute("class", "lastcell");
+    lastCell.textContent = `${this.totalCook}`;
+    row.appendChild(lastCell);
+  }
+
+
 function renderHeader() {
   
   let header = document.createElement('thead');
@@ -59,188 +85,78 @@ function renderHeader() {
   header.appendChild(headerRow);
 
   let thElem1 = document.createElement('th');
-  thElem1.textContent = '';
+  thElem1.textContent = ``;
   headerRow.appendChild(thElem1);
 
   for(let i = 0; i < storeHours.length; i++) {
     let thElem = document.createElement('th');
-    thElem.textContent = storeHours[i];
+    thElem.textContent = `${storeHours[i]}`;
     headerRow.appendChild(thElem);
   }
   let thElem = document.createElement('th');
   thElem.textContent = `Daily Location Total`;
   headerRow.appendChild(thElem);
 }
-renderHeader();
-
-let tableBody = document.createElement('tbody');
-locationSales.appendChild(tableBody);
-
-seattle.render = function() {
-  
-  let row = document.createElement('tr');
-  tableBody.appendChild(row);
-
-  let headCell = document.createElement('th');
-  headCell.textContent = this.geo;
-  row.appendChild(headCell);
-
-  this.getHourCook();
-  console.log(this.cookPerHour);
-  for (let i = 0; i < this.cookPerHour.length; i++) {
-    let cellData = document.createElement('td');
-    cellData.textContent = this.cookPerHour[i];
-    row.appendChild(cellData);
-  }
-
-  let lastCell = document.createElement('td');
-  lastCell.setAttribute("class", "lastcell");
-  lastCell.textContent = this.totalCook;
-  row.appendChild(lastCell);
-
-}
-seattle.render();
-
-tokyo.render = function() {
-  
-  let row = document.createElement('tr');
-  tableBody.appendChild(row);
-
-  let headCell = document.createElement('th');
-  headCell.textContent = this.geo;
-  row.appendChild(headCell);
-
-  this.getHourCook();
-  console.log(this.cookPerHour);
-  for (let i = 0; i < this.cookPerHour.length; i++) {
-    let cellData = document.createElement('td');
-    cellData.textContent = this.cookPerHour[i];
-    row.appendChild(cellData);
-  }
-
-  let lastCell = document.createElement('td');
-  lastCell.setAttribute("class", "lastcell");
-  lastCell.textContent = this.totalCook;
-  row.appendChild(lastCell);
-
-}
-tokyo.render();
-
-dubai.render = function() {
-  
-  let row = document.createElement('tr');
-  tableBody.appendChild(row);
-
-  let headCell = document.createElement('th');
-  headCell.textContent = this.geo;
-  row.appendChild(headCell);
-
-  this.getHourCook();
-  console.log(this.cookPerHour);
-  for (let i = 0; i < this.cookPerHour.length; i++) {
-    let cellData = document.createElement('td');
-    cellData.textContent = this.cookPerHour[i];
-    row.appendChild(cellData);
-  }
-
-  let lastCell = document.createElement('td');
-  lastCell.setAttribute("class", "lastcell");
-  lastCell.textContent = this.totalCook;
-  row.appendChild(lastCell);
-
-}
-dubai.render();
-
-paris.render = function() {
-  
-  let row = document.createElement('tr');
-  tableBody.appendChild(row);
-
-  let headCell = document.createElement('th');
-  headCell.textContent = this.geo;
-  row.appendChild(headCell);
-
-  this.getHourCook();
-  console.log(this.cookPerHour);
-  for (let i = 0; i < this.cookPerHour.length; i++) {
-    let cellData = document.createElement('td');
-    cellData.textContent = this.cookPerHour[i];
-    row.appendChild(cellData);
-  }
-
-  let lastCell = document.createElement('td');
-  lastCell.setAttribute("class", "lastcell");
-  lastCell.textContent = this.totalCook;
-  row.appendChild(lastCell);
-
-}
-paris.render();
-
-lima.render = function() {
-  
-  let row = document.createElement('tr');
-  tableBody.appendChild(row);
-
-  let headCell = document.createElement('th');
-  headCell.textContent = this.geo;
-  row.appendChild(headCell);
-
-  this.getHourCook();
-  console.log(this.cookPerHour);
-  for (let i = 0; i < this.cookPerHour.length; i++) {
-    let cellData = document.createElement('td');
-    cellData.textContent = this.cookPerHour[i];
-    row.appendChild(cellData);
-  }
-
-  let lastCell = document.createElement('td');
-  lastCell.setAttribute("class", "lastcell");
-  lastCell.textContent = this.totalCook;
-  row.appendChild(lastCell);
-
-}
-lima.render();
 
 function renderFooter() {
   
   let footer = document.createElement('tfoot');
+  footer.setAttribute('id', 'tabfoot')
   locationSales.appendChild(footer);
 
   let footerRow = document.createElement('tr');
   footer.appendChild(footerRow);
 
   let tfElem1 = document.createElement('td');
-  tfElem1.textContent = '';
+  tfElem1.textContent = `Hourly Totals`;
   footerRow.appendChild(tfElem1);
 
-  for(let i = 0; i < storeHours.length; i++) {
-    let tfElem = document.createElement('td');
-    tfElem.textContent = seattle.cookPerHour[i] + tokyo.cookPerHour[i] + dubai.cookPerHour[i] + paris.cookPerHour[i] + lima.cookPerHour[i];
-    footerRow.appendChild(tfElem);
+  let totalForDay = 0;
+  for (let i = 0; i < storeHours.length; i++) {
+    let totalByHour = 0;
+    for (let j = 0; j < locationArray.length; j++) {
+      totalByHour += (locationArray[j].cookPerHour[i]);
+    }
+    let grandTotalByHour = document.createElement('td');
+    grandTotalByHour.textContent = `${totalByHour}`;
+    footerRow.appendChild(grandTotalByHour);
+    totalForDay += totalByHour;
   }
-  let tfElem = document.createElement('td');
-  tfElem.textContent = seattle.totalCook + tokyo.totalCook + dubai.totalCook + paris.totalCook + lima.totalCook;
-  footerRow.appendChild(tfElem);
+  let grandTotalByDay = document.createElement('td');
+  grandTotalByDay.textContent = `${totalForDay}`;
+  footerRow.appendChild(grandTotalByDay);
 }
-renderFooter();
+
+// COMPREHENSIVE TABLE RENDER FUNCTION
+
+function tableCookSales() {
+  renderHeader();
+  for (let i = 0; i < locationArray.length; i++) {
+    let getLoc = locationArray[i];
+    getLoc.render();
+  }
+  renderFooter();
+}
+tableCookSales();
 
 // EVENT HANDLER
 
 function handleSubmit(event) {
   event.preventDefault();
-
+  console.log('submit');
   let geo = event.target.geo.value;
   let minCust = +event.target.minCust.value;
   let maxCust = +event.target.maxCust.value;
   let avgCook = +event.target.avgCook.value;
-  let newLoc = new Sales(geo, minCust, maxCust, avgCook);
-
+  let newLoc = new Sales(geo, minCust, maxCust, avgCook, [], [], 0);
+  console.log(newLoc);
   newLoc.render();
 
-  let removeFooter = document.getElementById('tfoot');
+  let removeFooter = document.getElementById('tabfoot');
   removeFooter.innerHTML = "";
   removeFooter.remove();
   renderFooter();
+  
   formNewLoc.reset();
 }
 
